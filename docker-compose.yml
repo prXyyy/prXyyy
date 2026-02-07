@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  os-monitor:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/opt/monitor_os/logs
+      - ./historico:/opt/monitor_os
