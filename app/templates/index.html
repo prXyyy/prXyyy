@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monitor de O.S.</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <h1>Monitor de O.S. e alertas</h1>
+          <p>Acompanhe os logs do monitoramento em tempo real.</p>
+        </div>
+        <form method="post" action="{{ url_for('manual_start') }}">
+          <button type="submit">Iniciar monitor</button>
+        </form>
+      </header>
+
+      <section class="panel">
+        <h2>Últimas linhas</h2>
+        {% if lines %}
+          <pre class="log">
+{% for line in lines %}{{ line }}
+{% endfor %}
+          </pre>
+        {% else %}
+          <p>Nenhum log disponível ainda. Execute o script para começar.</p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>
